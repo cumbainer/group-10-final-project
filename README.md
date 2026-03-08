@@ -59,3 +59,22 @@ def main():
 - **errors.py** -> декоратор помилок
 - **storage.py** -> save/load
 - **cli.py** -> запуск бота і цикл команд
+
+## Структура проєкту
+
+```text
+goit-pycore-hw-07/
+├─ bot/
+│  ├─ __init__.py
+│  ├─ addressbook.py
+│  ├─ commands.py
+│  ├─ cli.py
+│  └─ errors.py
+│  └─ storage.py
+└─ README.md
+```
+
+- Запускайте з кореня проєкту (там, де є папка bot/):
+
+```bash
+python -m bot.cli

@@ -2,14 +2,17 @@ from typing import Callable, Dict, List, Tuple
 from bot.commands import add_contact, change_contact, show_phone, show_all
 from bot.commands import add_birthday, show_birthday, birthdays
 from bot.addressbook import AddressBook
+from bot.storage import save_data, load_data
 
 
 def parse_input(user_input: str) -> Tuple[str, List[str]]:
+    """Split user input into command and arguments."""
     cmd, *args = user_input.split()
     return cmd.strip().lower(), args
 
 def main() -> None:
-    book: AddressBook = AddressBook()
+    """Run the CLI assistant bot."""
+    book = load_data()
     
     # Command router: maps CLI command names to handler functions.
     commands: Dict[str, Callable[[List[str], AddressBook], str]] = {
@@ -29,8 +32,9 @@ def main() -> None:
         if not user_input.strip():
             continue
         command, args = parse_input(user_input)
-
+        
         if command in {"close", "exit"}:
+            save_data(book) #Save data before exiting the program.
             print("Good bye!")
             break
 

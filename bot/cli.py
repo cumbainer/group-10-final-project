@@ -1,6 +1,7 @@
 from typing import Callable, Dict, List, Tuple
 from bot.commands import add_contact, change_contact, show_phone, show_all
 from bot.commands import add_birthday, show_birthday, birthdays
+from bot.commands import add_email, add_address
 from bot.addressbook import AddressBook
 from bot.notebook import Notebook
 from bot.storage import save_data, load_data, save_notebook, load_notebook
@@ -24,6 +25,8 @@ def main() -> None:
         "add-birthday": add_birthday,
         "show-birthday": show_birthday,
         "birthdays": birthdays,
+        "add-email": add_email,
+        "add-address": add_address,
     }
 
     note_commands: Dict[str, Callable] = {
